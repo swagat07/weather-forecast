@@ -1,0 +1,84 @@
+<div class="container-fluid">
+
+  <h3 class="text-primary">Weather Forecast Dashboard</h3>
+
+  <div class="row mt-5">
+    <div class="col-md-3 align-self-center">
+
+      <div class="form-group mb-0">
+        <input type="text" placeholder="Search"
+               class="form-control" [(ngModel)]="search" [ngbTypeahead]="searchData"/>
+      </div>
+
+    </div>
+
+    <div class="col-md-2 align-self-center">
+
+      <div class="form-group mb-0">
+        <select id="type"
+                class="form-control custom-select" [(ngModel)]="type">
+          <option value="">Select Type</option>
+          <option value="current">Current Forecast</option>
+          <option value="hourly">Hourly Forecast</option>
+          <option value="16 days">16 Days Forecast</option>
+        </select>
+        <label for="type"></label>
+      </div>
+
+    </div>
+
+    <div class="col-md-1 align-self-center">
+
+      <button class="btn btn-sm btn-primary pl-3 pr-3 pt-2 pb-2"
+              [disabled]="!getButtonStatus()" (click)="getReport()">Submit
+      </button>
+
+    </div>
+  </div>
+
+  <div class="row mt-5" *ngIf="reportDetails">
+    <div class="col-md-4">
+
+      <div class="card widget-weather">
+        <div class="card-block">
+
+          <h5 class="card-title">{{reportDetails?.name}}, {{date | date: 'dd MMMM'}}</h5>
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="inline-block">
+                <h1 class="today-cel">
+                  <span>{{temperatureConverter(reportDetails?.main?.temp) | number: '1.1-1'}}°</span>
+                </h1>
+                <p>{{reportDetails?.weather[0]?.main}}</p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-4">
+              <h5 class="mb-0">
+                {{temperatureConverter(reportDetails?.main?.temp_min) | number: '1.1-1'}}°
+                / {{temperatureConverter(reportDetails?.main?.temp_max) | number: '1.1-1'}}°</h5>
+              <p class="mb-0">Temp</p>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-4">
+              <h5 class="mb-0">{{reportDetails?.main?.humidity}}%</h5>
+              <p class="mb-0">Humidity</p>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-4">
+              <h5 class="mb-0">{{reportDetails?.wind?.speed}}<span class="font-size-13">km/h</span></h5>
+              <p class="mb-0">Wind</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

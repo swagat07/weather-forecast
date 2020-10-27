@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+.container-fluid {
+  padding: 50px;
+}
+
+.btn {
+  &.disabled,
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.custom-select {
+  background: #ffffff url('./assets/drop-down.png') right 15px center no-repeat;
+}
+
+.card-block {
+  padding: 30px;
+}
+
+.widget-weather {
+
+  .today-cel {
+    font-size: 60px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    line-height: 1;
+  }
+
+  .today-weather {
+    font-size: 60px;
+  }
+
+  .next-7day {
+    text-align: center;
+  }
+}
+
+.inline-block {
+  display: inline-block !important;
+}
