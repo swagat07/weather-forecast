@@ -53,6 +53,8 @@ export class DashboardComponent implements OnInit {
     }
 
     this.cityList.push(this.search);
+    this.cityList = [...new Set(this.cityList)];
+
     localStorage.setItem('cityList', JSON.stringify(this.cityList));
 
     this.weatherForecastService.getReports(path, params).subscribe((res: IReport) => {
